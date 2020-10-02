@@ -16,12 +16,16 @@ class ansible_cluster:
 
     def start_command(self):
         result_str = ""
+        error_str = ""
         stdin , stdout, stderr = self.ssh_client.exec_command(self.command)
         for str in stdout.readlines():
             if str.find("ok=") >= 0:
                 if str.find("unreachable=0    failed=0") < 0:
-                    str = '>:( ' + str
+                    error_str += str
                 result_str += str
+
+        if error_str != "":
+            result_str += ('\n===== errors =====\n' + error_str)
         return result_str
             
     def __exit__(self):
