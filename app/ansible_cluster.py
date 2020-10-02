@@ -1,5 +1,7 @@
 import paramiko
 from .info import *
+import re
+
 
 class ansible_cluster:
     def __init__(self, privateKey_path:str, command:str):
@@ -17,6 +19,8 @@ class ansible_cluster:
         stdin , stdout, stderr = self.ssh_client.exec_command(self.command)
         for str in stdout.readlines():
             if str.find("ok=") >= 0:
+                if str.find("unreachable=0    failed=0") < 0:
+                    str = '>:( ' + str
                 result_str += str
         return result_str
             
