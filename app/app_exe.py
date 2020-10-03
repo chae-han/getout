@@ -53,7 +53,7 @@ def start_ansible(request, ansible_command:str):
     data = str(request.form['text'])
     hostname_list = data.split(',')
 
-    if request.form['channel_id'] != slack_channel_id:
+    if request.form['channel_id'] != slack_channel_id or request.form['user_id'] not in slack_manager:
         res = ''
     if is_ac_thread_alive():
         res = already_msg 
