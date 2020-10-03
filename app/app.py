@@ -17,6 +17,10 @@ def default_mode():
     msg = start_ansible(request, 'default')
     return Response(msg)
 
+@app.route('/42exam', methods=['POST'])
+def exam_mode():
+    msg = start_ansible(request, 'exam')
+    return Response(msg)
 
 if __name__ == '__main__':
     app.run()
