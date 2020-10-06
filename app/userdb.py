@@ -5,7 +5,7 @@ from .config import *
 
 class db_work:
     def __init__(self):
-        self.conn = pymysql.connect(host=db_host, user=db_user, password=db_password, db=db_name, port = db_port, charset=db_charset)
+        self.conn = pymysql.connect(host=db_host, user=db_user, passwd=db_password, db=db_name, port = db_port, charset=db_charset)
         self.cur = self.conn.cursor()
 
     def do_sql(self, sql:str):
