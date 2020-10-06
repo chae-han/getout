@@ -10,7 +10,7 @@ def start_userdb(request, userdb_command:str):
         
 
 def add_user(user_id:str):
-    res = error_db_msg
+    res = db_error_msg
     try:
         id = app.database.execute(text("""
                 INSERT INTO users (
@@ -19,7 +19,7 @@ def add_user(user_id:str):
                         :user_id
                         )
                 """), user_id).lastrowid
-        res = success_db_msg + " user_id: " + id
+        res = db_success_msg + " user_id: " + id
     except:
         pass
     return res

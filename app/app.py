@@ -1,6 +1,7 @@
 from flask import Flask, request, Response
 from sqlalchemy import create_engine, text
 from .app_exe import start_ansible
+from .userdb import start_userdb
 
 #flask app
 app = Flask(__name__)
@@ -29,10 +30,11 @@ def exam_mode():
 
 @app.route('/42adduser', methods=['POST'])
 def add_manager():
-    msg = start_usersdb(request, 'add')
+    msg = start_userdb(request, 'add')
     return Response(msg)
 
 @app.route('/42deluser', methods=['POST'])
+def delete_manager():
     msg = start_userdb(request, 'delete')
     return Response(msg)
 
