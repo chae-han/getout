@@ -31,6 +31,10 @@ def exam_mode():
 def add_manager():
     msg = start_usersdb(request, 'add')
     return Response(msg)
-    
+
+@app.route('/42deluser', methods=['POST'])
+    msg = start_userdb(request, 'delete')
+    return Response(msg)
+
 if __name__ == '__main__':
     app.run()
