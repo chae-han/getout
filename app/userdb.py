@@ -1,7 +1,7 @@
 #from sqlalchemy import text
 import pymysql
 from .info import *
-form .config import *
+from .config import *
 
 class db_work:
     def __init__(self):
