@@ -1,13 +1,13 @@
 from flask import Flask, request, Response
-from sqlalchemy import create_engine, text
+#from sqlalchemy import create_engine, text
 from .app_exe import start_ansible
 from .userdb import start_userdb
 
 #flask app
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
-db = create_engine(app.config['DB_URL'], encoding = 'utf-8')
-app.database = db 
+#app.config.from_pyfile('config.py')
+#db = create_engine(app.config['DB_URL'], encoding = 'utf-8')
+#app.database = db 
 
 @app.route('/42test', methods=['POST'])
 def home():
