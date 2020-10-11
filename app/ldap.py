@@ -1,7 +1,7 @@
 #ldap search
 import subprocess
 import pandas as pd
-from ftapi import *
+from .ftapi import *
 from time import sleep
 import json
 from pprint import pprint
