@@ -1,6 +1,13 @@
 #ldap search
 import subprocess
 import pandas as pd
+from ftapi import *
+from time import sleep
+import json
+from pprint import pprint
+
+u,s = auth()
+terry = Api(u,s)
 
 def exe_srch_email_get_login(email:str):
     res = ''
