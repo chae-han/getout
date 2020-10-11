@@ -29,15 +29,15 @@ def exam_mode():
     msg = start_ansible(request, 'exam')
     return Response('/42exam  ' + msg)
 
-@app.route('/42srchid', methods=['POST'])
+@app.route('/42srcid', methods=['POST'])
 def get_id_srch_email():
     msg = start_ldapsearch(request, 'email')
-    return Response('login id : ' + msg)
+    return Response(msg)
 
-@app.route('/42setpswd', methods=['POST'])
+@app.route('/42setpw', methods=['POST'])
 def set_pswd_with_id():
     msg = start_ldapsearch(request, 'setpswd')
-    return Response('/42setpswd ' + msg)
+    return Response(msg)
 
 
 @app.route('/42adduser', methods=['POST'])
