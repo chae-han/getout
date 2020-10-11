@@ -170,7 +170,6 @@ class Api(object):
         resp = req.post("https://api.intra.42.fr/oauth/token", data=auth_data)
         resp.raise_for_status()
         parsed_resp = resp.json()
-        print("token generated. Expires in:", parsed_resp["expires_in"], "seconds")
         return parsed_resp["access_token"]
 
     #######################################################
