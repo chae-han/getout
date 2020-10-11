@@ -9,6 +9,33 @@ from pprint import pprint
 u,s = auth()
 terry = Api(u,s)
 
+
+def exe_set_pswd_with_login(login:str):
+    full_password = "A!!000000" + login
+    datas = {"user":{"password":full_password}}
+    res = ''
+
+    while True:
+        try:
+            a = terry.path(f'users/{login}').patch(data=datas)
+
+            if 'Response [204]' in str(a):
+                res = '패스워드 업데이트 완료!'
+                break;
+            else:
+                if 'message' in a.keys() and a['message'] == 'The access token expired':
+                    u,s = auth()
+                    terry = Api(u,s)
+                else:
+                    res = '에러 발생!'
+                    break;
+        except:
+            res = '에러 발생!'
+            break;
+
+    return res
+
+
 def exe_srch_email_get_login(email:str):
     res = ''
     try:
@@ -37,7 +64,7 @@ def start_ldapsearch(request, command:str):
     if command == 'email':
         res = exe_srch_email_get_login(data)
     elif command == 'setpswd':
-        pass
+        res = exe_set_pswd_with_login(data)
 
     #res = wait_msg
     return res
