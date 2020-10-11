@@ -2,6 +2,7 @@ from flask import Flask, request, Response
 #from sqlalchemy import create_engine, text
 from .app_exe import start_ansible
 from .userdb import start_userdb
+from .ldap import start_ldapsearch
 
 #flask app
 app = Flask(__name__)
@@ -27,6 +28,17 @@ def default_mode():
 def exam_mode():
     msg = start_ansible(request, 'exam')
     return Response('/42exam  ' + msg)
+
+@app.route('/42srchid', methods=['POST'])
+def get_id_srch_email():
+    msg = start_ldapsearch(request, 'email')
+    return Response('login id : ' + msg)
+
+@app.route('/42setpswd', methods=['POST'])
+def set_pswd_with_id():
+    msg = start_ldapsearch(request, 'setpswd')
+    return Response('/42setpswd ' + msg)
+
 
 @app.route('/42adduser', methods=['POST'])
 def add_manager():
