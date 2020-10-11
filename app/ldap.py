@@ -11,6 +11,8 @@ terry = Api(u,s)
 
 
 def exe_set_pswd_with_login(login:str):
+    global terry
+
     full_password = "A!!000000" + login
     datas = {"user":{"password":full_password}}
     res = ''
