@@ -10,7 +10,7 @@ def exe_srch_email_get_login(email:str):
         tmp = [val for val in df_list if email in val]
 
         if len(tmp) != 1:
-            res = '중복되는 이메일이 있습니다. 저 자세하게 이메일 주소를 입력하세요!'
+            res = '중복되는 이메일이 있거나 존재하지 않는 이메일 주소입니다. 더 자세하게 이메일 주소를 입력하세요!'
         else:
             eng_name = tmp[0].split(',')[1]
             ldap_res = subprocess.check_output(f"ldapsearch -x -LLL cn='{eng_name}' | grep uid:", shell=True, encoding='utf-8')
