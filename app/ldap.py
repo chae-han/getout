@@ -5,7 +5,7 @@ import pandas as pd
 def exe_srch_email_get_login(email:str):
     res = ''
     try:
-        df = pd.read_csv('3_1.csv')
+        df = pd.read_csv('/home/bocal/3_1.csv')
         df_list = list(df['email'])
         tmp = [val for val in df_list if email in val]
 
