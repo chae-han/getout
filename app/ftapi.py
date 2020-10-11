@@ -57,7 +57,7 @@ def auth():
     secret = None
     # with open("api_auth.txt", 'r') as file:
     # with open("api_auth.txt", 'r' as file:
-    with open("auth.txt", 'r') as file:
+    with open("/home/bocal/auth.txt", 'r') as file:
         uid = file.readline()[0:-1]
         secret = file.readline()[0:-1]
     return uid, secret
